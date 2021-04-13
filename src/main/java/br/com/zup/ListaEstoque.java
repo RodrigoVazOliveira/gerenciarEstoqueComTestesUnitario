@@ -3,11 +3,11 @@ package br.com.zup;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LIstaEstoque {
+public class ListaEstoque {
 
     private List<Produto> produtos;
 
-    public LIstaEstoque() {
+    public ListaEstoque() {
         produtos = new ArrayList<>();
     }
 
