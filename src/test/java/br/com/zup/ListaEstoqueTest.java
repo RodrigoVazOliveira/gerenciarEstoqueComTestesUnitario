@@ -23,4 +23,20 @@ public class ListaEstoqueTest {
         );
         Assert.assertTrue(lIstaEstoque.adicionarNovoProduto(produto));
     }
+
+    @Test
+    public void testarProcuraDeProdutoPeloNome() {
+        Produto produto = new Produto(
+                "produto 1",
+                "12-12-2021",
+                20.5,
+                1
+        );
+        lIstaEstoque.adicionarNovoProduto(produto);
+
+        Assert.assertThrows(RuntimeException.class, () -> {
+            lIstaEstoque.obterProdutoPeloNome("sdfsdfds");
+        });
+        Assert.assertEquals(produto, lIstaEstoque.obterProdutoPeloNome("produto 1"));
+    }
 }
