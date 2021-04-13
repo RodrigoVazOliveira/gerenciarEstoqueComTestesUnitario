@@ -56,4 +56,39 @@ public class ListaEstoqueTest {
         });
         Assert.assertTrue(lIstaEstoque.removerProduto("produto 1"));
     }
+
+    @Test
+    public void TestarQuantidadeNegativa() {
+        Assert.assertTrue(lIstaEstoque.verificarQuantidadeNegativa(-1));
+    }
+
+    @Test
+    public void TestarQuantidadePositiva() {
+        Assert.assertFalse(lIstaEstoque.verificarQuantidadeNegativa(1));
+    }
+
+    @Test
+    public void testarAlteracaoDeQuantidadeDoProduto() {
+        Produto produto = new Produto(
+                "produto 1",
+                "12-12-2021",
+                20.5,
+                1
+        );
+
+        lIstaEstoque.adicionarNovoProduto(produto);
+
+        Assert.assertThrows(RuntimeException.class, () -> {
+            lIstaEstoque.alterarQuantidadeDoProduto("sdafdsfdssdf", 90);
+        });
+
+        Assert.assertThrows(RuntimeException.class, () -> {
+            lIstaEstoque.alterarQuantidadeDoProduto("produto 1", -2);
+        });
+
+        lIstaEstoque.alterarQuantidadeDoProduto("produto 1", 5);
+
+        Assert.assertEquals(produto.getQuantidadeEmEstoque(), 6);
+
+    }
 }
