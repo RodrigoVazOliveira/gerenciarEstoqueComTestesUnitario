@@ -32,4 +32,9 @@ public class ListaEstoque {
         throw new RuntimeException("nenhum produto foi localizado com o nome " + nome);
     }
 
+    public Boolean removerProduto(String nome) {
+        Produto produto = obterProdutoPeloNome(nome);
+        return produtos.remove(produto);
+    }
+
 }
