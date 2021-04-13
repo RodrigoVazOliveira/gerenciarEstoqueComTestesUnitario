@@ -37,4 +37,8 @@ public class ListaEstoque {
         return produtos.remove(produto);
     }
 
+    public void alterarQuantidadeDoProduto(String nome, Integer quantidade) {
+        Produto produto = obterProdutoPeloNome(nome);
+        produto.setQuantidadeEmEstoque(produto.getQuantidadeEmEstoque() + quantidade);
+    }
 }
