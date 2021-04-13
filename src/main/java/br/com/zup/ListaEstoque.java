@@ -39,6 +39,15 @@ public class ListaEstoque {
 
     public void alterarQuantidadeDoProduto(String nome, Integer quantidade) {
         Produto produto = obterProdutoPeloNome(nome);
+
+        if (verificarQuantidadeNegativa(produto.getQuantidadeEmEstoque() + quantidade)) {
+            throw new RuntimeException("A quantidade não pode ser menor do que 0");
+        }
+
         produto.setQuantidadeEmEstoque(produto.getQuantidadeEmEstoque() + quantidade);
+    }
+
+    public Boolean verificarQuantidadeNegativa(Integer quantidade) {
+        return quantidade < 0;
     }
 }
