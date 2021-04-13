@@ -23,4 +23,13 @@ public class ListaEstoque {
         return produtos.add(produto);
     }
 
+    public Produto obterProdutoPeloNome(String nome) {
+        for (Produto produto : produtos) {
+            if (produto.getNome().equalsIgnoreCase(nome)) {
+                return produto;
+            }
+        }
+        throw new RuntimeException("nenhum produto foi localizado com o nome " + nome);
+    }
+
 }
